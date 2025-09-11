@@ -22,6 +22,12 @@ def connect_server(self):
 
             s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
 
+if __name__ == '__main__':
+    try:
+        app = ConnectServer()
+    except OSError:
+        pass
+
 root = Tk()
 root.title("GameServer")
 root.geometry("400x400")
