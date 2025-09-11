@@ -1,6 +1,8 @@
 import socket
 from tkinter import *
 
+# Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
+
 class ConnectServer:
 
     def __init__(self):
