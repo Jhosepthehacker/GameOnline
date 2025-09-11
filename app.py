@@ -29,5 +29,6 @@ widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
 widget_text.place(x=280, y=60)
 
 widget_btn = Button(text="Botón")
+widget_btn.place(x=400, y=120)
 
 root.mainloop()
