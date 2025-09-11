@@ -1,5 +1,7 @@
 import socket
-import threading
+import pygame
+import sqlite3
+import threading as thr
 import sys
 
 HOST = 'localhost'
