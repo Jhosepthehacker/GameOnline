@@ -21,7 +21,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 data = s.recv(1024)
                 message = data.decode()
 
-            except KeyborardInterrupt:
+            except KeyboardInterrupt:
                 sys.exit()
 
         except OSError:
