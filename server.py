@@ -32,4 +32,4 @@ while True:
                 sys.exit()
 
         except OSError:
-            pass
+            print("Hubo un error en la comunicación")
