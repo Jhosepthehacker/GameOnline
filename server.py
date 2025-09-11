@@ -1,5 +1,4 @@
 import socket
-import pygame
 import sqlite3
 import threading as thread
 import sys
