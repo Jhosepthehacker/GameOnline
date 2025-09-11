@@ -29,7 +29,11 @@ while True:
                 message = data.decode()
 
             except KeyboardInterrupt:
+                conn.close()
+                s.close()
                 sys.exit()
 
         except OSError:
+            conn.close()
+            s.close()
             print("Hubo un error en la comunicación")
