@@ -1,4 +1,5 @@
 import socket
+import threading
 from tkinter import *
 
 # Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
