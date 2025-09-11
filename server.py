@@ -14,6 +14,7 @@ while True:
     
     except OSError:
         PORT = 6785
+        print("Hubo un pequeño error")
         continue
     
     while True:
