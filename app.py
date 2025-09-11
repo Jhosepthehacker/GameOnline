@@ -1,6 +1,10 @@
 import socket
+import pygame
+import sys
+import sqlite3
 import threading
 from tkinter import *
+from time import sleep
 
 # Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
 
@@ -28,14 +32,23 @@ if __name__ == '__main__':
     except OSError:
         pass
 
-root = Tk()
-root.title("GameServer")
-root.geometry("400x400")
+user_name = input("¿Cómo te llamas?: ").title()
 
-widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
-widget_text.place(x=280, y=60)
+response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
+response.strip()
 
-widget_btn = Button(text="Botón")
-widget_btn.place(x=400, y=120)
+if response == "si" or response == "sí":
+    root = Tk()
+    root.title("GameServer")
+    root.geometry("400x400")
 
-root.mainloop()
+    widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
+    widget_text.place(x=280, y=60)
+
+    widget_btn = Button(text="Botón")
+    widget_btn.place(x=400, y=120)
+
+    root.mainloop()
+else:
+    print("El juego se generará en la terminal. Por favor espere un momento....")
+    sleep(1)
