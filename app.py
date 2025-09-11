@@ -2,7 +2,7 @@ import socket
 import pygame
 import sys
 import sqlite3
-import threading
+import threading as thread
 from tkinter import *
 from time import sleep
 
