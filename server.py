@@ -29,6 +29,8 @@ while True:
                 data = s.recv(1024)
                 message = data.decode()
 
+# Se había olvidado qye había implementado 'with'
+            
             except KeyboardInterrupt:
                 conn.close()
                 s.close()
