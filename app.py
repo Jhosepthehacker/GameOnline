@@ -43,10 +43,10 @@ if response == "si" or response == "sí":
     root.geometry("400x400")
 
     widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
-    widget_text.place(x=280, y=60)
+    widget_text.grid(row=0, column=0)
 
     widget_btn = Button(text="Botón")
-    widget_btn.place(x=400, y=120)
+    widget_btn.grid(row=0 column=1)
 
     root.mainloop()
 else:
