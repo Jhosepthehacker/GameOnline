@@ -46,7 +46,7 @@ if response == "si" or response == "sí":
     widget_text.grid(row=0, column=1)
 
     widget_btn = Button(text="Botón")
-    widget_btn.grid(row=1 column=1)
+    widget_btn.grid(row=1, column=1)
 
     root.mainloop()
 else:
