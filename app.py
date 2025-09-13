@@ -1,5 +1,5 @@
 import socket
-import pygame
+import kivy
 import sys
 import sqlite3
 import threading as thread
