@@ -32,10 +32,11 @@ if __name__ == '__main__':
     except OSError:
         pass
 
-user_name = input("¿Cómo te llamas?: ").title()
+try:
+    user_name = input("¿Cómo te llamas?: ").title()
 
-response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
-response.strip()
+    response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
+    response.strip()
 
 if response == "si" or response == "sí":
     root = Tk()
@@ -52,3 +53,17 @@ if response == "si" or response == "sí":
 else:
     print("El juego se generará en la terminal. Por favor espere un momento....")
     sleep(1)
+
+except EOFError:
+    print("No estás en un entorno interactivo de terminal o consola")
+    root = Tk()
+    root.title("GameServer")
+    root.geometry("400x400")
+
+    widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
+    widget_text.grid(row=0, column=1)
+
+    widget_btn = Button(text="Botón")
+    widget_btn.grid(row=1, column=1)
+
+    root.mainloop()
