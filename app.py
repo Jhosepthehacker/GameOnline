@@ -27,7 +27,7 @@ class DataBase:
                 name TEXT,
                 money INTEGER
            )"""
-        )
+)
         self.conn.commit()
         self.conn.close()
 
