@@ -4,6 +4,7 @@ import sys
 import sqlite3
 import threading as thread
 from tkinter import *
+from tkinter import ttk, messagebox, Toplevel
 from time import sleep
 
 # Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
