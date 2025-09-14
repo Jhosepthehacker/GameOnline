@@ -52,7 +52,7 @@ try:
 
         root.mainloop()
     else:
-        print("El juego se generará en la terminal. Por favor espere un momento....")
+        print("\nEl juego se generará en la terminal. Por favor espere un momento....")
         sleep(1)
 
 except EOFError:
