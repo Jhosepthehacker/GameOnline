@@ -46,7 +46,7 @@ try:
         widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
         widget_text.grid(row=0, column=1)
 
-        widget_btn = Button(text="Botón")
+        widget_btn = ttk.Button(text="Botón")
         widget_btn.grid(row=1, column=1)
 
         root.mainloop()
@@ -63,7 +63,7 @@ except EOFError:
     widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
     widget_text.grid(row=0, column=1)
 
-    widget_btn = Button(text="Botón")
+    widget_btn = ttk.Button(text="Botón")
     widget_btn.grid(row=1, column=1)
 
     root.mainloop()
