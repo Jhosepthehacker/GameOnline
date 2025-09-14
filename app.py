@@ -9,8 +9,29 @@ from time import sleep
 
 # Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
 
-class ConnectServer:
+class DataBase:
+    def __ini__(self, conn):
+        self.conn = conn
+        self.conn.commit()
+        self.conn.close()
 
+        self.create_table()
+
+# No usaré 'width' para db en este caso
+    
+    def create_table(self):
+        self.conn = sql.connect("logs_game.db")
+        self.cursor = self.conn.cursor()
+        self.cursor.execute(
+           """CREATE TABLE IF NOT EXISTS data(
+                name TEXT,
+                money INTEGER
+           )"""
+        )
+        self.conn.commit()
+        self.conn.close()
+
+class ConnectServer:
     def __init__(self):
         self.HOST = 'localhost'
         self.PORT = 8080
@@ -28,6 +49,9 @@ def connect_server(self):
             s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
 
 if __name__ == '__main__':
+    conn = sql.connect("logs_game.db")
+    db = DataBase(conn)
+
     try:
         app = ConnectServer()
     except OSError:
