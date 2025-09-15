@@ -63,6 +63,8 @@ try:
     response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
     response.strip()
 
+# Próximamente se le implementará un "weight" para 'grid()'
+    
     if response == "si" or response == "sí":
         root = Tk()
         root.title("GameServer")
