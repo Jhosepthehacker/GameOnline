@@ -7,8 +7,6 @@ from tkinter import *
 from tkinter import ttk, messagebox, Toplevel
 from time import sleep
 
-# Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
-
 class DataBase:
     def __init__(self, conn):
         self.conn = conn
