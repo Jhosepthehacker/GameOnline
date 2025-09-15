@@ -87,10 +87,10 @@ except EOFError:
     root.title("GameServer")
     root.geometry("400x400")
 
-    widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
-    widget_text.grid(row=0, column=1)
-
     widget_btn = ttk.Button(text="Botón")
     widget_btn.grid(row=1, column=1)
 
+    widget_input = Entry(root)
+    widget_input.grid(row=2, column=2)
+    
     root.mainloop()
