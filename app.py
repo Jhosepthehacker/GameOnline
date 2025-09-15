@@ -1,7 +1,7 @@
 import socket
 import kivy
 import sys
-import sqlite3
+import sqlite3 as sql
 import threading as thread
 from tkinter import *
 from tkinter import ttk, messagebox, Toplevel
@@ -59,7 +59,7 @@ class ConnectServer:
         self.HOST = 'localhost'
         self.PORT = 8080
 
-        self.connect_server():
+        self.connect_server()
     
     def connect_server(self):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
