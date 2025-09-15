@@ -6,6 +6,9 @@ import sys
 HOST = 'localhost'
 PORT = 8080
 
+class DataBase:
+    pass
+
 while True:
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
