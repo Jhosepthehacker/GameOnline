@@ -31,26 +31,32 @@ class DataBase:
         self.conn.commit()
         self.conn.close()
 
+    def insert_data(self, name, money):
+        self.conn = sql.connect("logs_game.db")
+        self.cursor = self.conn.cursor()
+        self.instruction = f"INSERT INTO data VALUES('{name}', {money})"
+        self.cursor.execute(self.instruction)
+        self.conn.commit()
+        self.close()
+
 class ConnectServer:
     def __init__(self):
         self.HOST = 'localhost'
         self.PORT = 8080
 
-def connect_server(self):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect((self.HOST, self.PORT))
+        self.connect_server():
+    
+    def connect_server(self):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.connect((self.HOST, self.PORT))
 
-        while True:
-            self.data_receive = s.recv(1024)
-            self.message = self.data_receive.decode()
+            while True:
+                self.data_receive = s.recv(1024)
+                self.message = self.data_receive.decode()
 
-            print(f"Mensaje recibido: {self.message}")
+                print(f"Mensaje recibido: {self.message}")
 
-            s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
-
-# Próximamente, insertar datos y consultar la base de datos
-
-# Yo sé como insertar los datos y consultar la base de datos, sin embargo estoy agarrando un poco de tiempo
+                s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
 
 if __name__ == '__main__':
     conn = sql.connect("logs_game.db")
