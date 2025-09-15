@@ -48,6 +48,10 @@ def connect_server(self):
 
             s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
 
+# Próximamente, insertar datos y consultar la base de datos
+
+# Yo sé como insertar los datos y consultar la base de datos, sin embargo estoy agarrando un poco de tiempo
+
 if __name__ == '__main__':
     conn = sql.connect("logs_game.db")
     db = DataBase(conn)
