@@ -10,7 +10,7 @@ from time import sleep
 # Posibles errores de la clase 'ConnectServer', de su método 'connect_server'.
 
 class DataBase:
-    def __ini__(self, conn):
+    def __init__(self, conn):
         self.conn = conn
         self.conn.commit()
         self.conn.close()
