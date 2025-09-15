@@ -14,8 +14,19 @@ class DataBase:
 
         self.create_table()
 
-    def create_table():
-        pass
+    def create_table(self):
+        self.conn = sql.connect("logs_conection.db")
+        self.cursor = self.conn.cursor()
+        self.cursor.execute(
+           """CREATE TABLE IF NOT EXISTS data_conection(
+               day INTEGER,
+               month INTEGER,
+               year INTEGER
+               address TEXT,
+           )"""
+)
+        self.conn.commit()
+        self.conn.close()
 
 while True:
     try:
