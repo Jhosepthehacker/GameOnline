@@ -7,7 +7,15 @@ HOST = 'localhost'
 PORT = 8080
 
 class DataBase:
-    pass
+    def __init__(self, conn):
+        self.conn = conn
+        self.conn.commit()
+        self.conn.close()
+
+        self.create_table()
+
+    def create_table():
+        pass
 
 while True:
     try:
