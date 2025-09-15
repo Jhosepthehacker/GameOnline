@@ -39,6 +39,21 @@ class DataBase:
         self.conn.commit()
         self.close()
 
+    def read_data(self):
+        self.conn = sql.connect("logs_game.db")
+        self.cursor = self.conn.cursor()
+        self.instruction = "SELECT * FROM data;"
+        self.cursor.execute(self.instruction)
+        self.save_data = self.cursor.fetchall()
+        self.conn.commit()
+        self.conn.close()
+
+        for i in self.save_data:
+            self.save_name = i[0]
+            self.save_money = i[1]
+        print(f"Nombre: {self.save_name}")
+        print(f"Dinero en el juego: {self.save_money}")
+
 class ConnectServer:
     def __init__(self):
         self.HOST = 'localhost'
