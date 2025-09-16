@@ -1,0 +1,14 @@
+
+# dependencias principales para que funcione el programa 
+kivy>=2.3.0  # framework para la interfaz grafica
+
+# librerias como estandar como socket, threading, sqlite3, time entre otros ya estan por defecto en python
+# para instalar los requerimientos ejecuta el siguiente comando en la terminal sobre el directorio donde esta este archivo
+
+## pip install -r requirements.txt
+
+# nota: puede que mas adelante se cambien las dependencias asi que en caso tal de una actualizacion ejecute siempre el comando 
+
+## pip install -r requirements.txt
+
+# eso es todo espero que disfrute el  programa feliz dia bye
