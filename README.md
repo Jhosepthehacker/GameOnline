@@ -6,3 +6,8 @@
 
 >[!WARNING]
 > El juego está en pleno desarrollo....
+
+>[!TIP]
+> **¡Contáctanos en nuestra comunidad de discord!**
+
+<img src="https://prueba.png" <a href="https://prueba_discord_comunity.com">Discord Comunity</a>>
