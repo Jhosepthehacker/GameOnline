@@ -10,4 +10,4 @@
 >[!TIP]
 > **¡Contáctanos en nuestra comunidad de discord!**
 
-<img src="https://prueba.png"> <a href="https://prueba_discord_comunity.com">Discord Comunity</a>
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD7eDGpqpZI9Vnk9Z0e2sAodI5U4KiKDJwsOJVh3H51ZT8E26OHn_SYDI&amp;s"> <a href="https://discord.gg/tvN6Aggx">Discord Comunity</a>
