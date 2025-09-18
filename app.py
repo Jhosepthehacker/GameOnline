@@ -123,11 +123,9 @@ try:
         root.title("GameServer")
         root.geometry("400x400")
 
-        # Texto de bienvenida
         widget_text_name = Label(root, text="Nombre:")
         widget_text_name.grid(row=0, column=0)
 
-        # Botón (sin acción asignada aún)
         widget_text_last_name = Label(root, text="Apellido:")
         widget_text_last_name.grid(row=1, column=0)
 
