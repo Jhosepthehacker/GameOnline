@@ -13,6 +13,11 @@ from time import sleep      # Para hacer pausas (simular carga)
 # ==========================
 #   Clase Base de Datos
 # ==========================
+
+class Kernel(App):
+    def __init__(self):
+        pass
+
 class DataBase:
     def __init__(self, conn):
         self.conn = conn
