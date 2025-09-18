@@ -36,7 +36,7 @@ class DataBase:
                 name TEXT,
                 money INTEGER
            )"""
-        )
+)
         self.conn.commit()
         self.conn.close()
 
@@ -124,13 +124,22 @@ try:
         root.geometry("400x400")
 
         # Texto de bienvenida
-        widget_text = Label(text="¡Hola Bienvenido(a) al juego!", fg="lightgreen")
-        widget_text.grid(row=0, column=1)
+        widget_text_name = Label(root, text="Nombre:")
+        widget_text_name.grid(row=0, column=0)
 
         # Botón (sin acción asignada aún)
-        widget_btn = ttk.Button(text="Botón")
-        widget_btn.grid(row=1, column=1)
+        widget_text_last_name = Label(root, text="Apellido:")
+        widget_text_last_name.grid(row=1, column=0)
 
+        widget_input = ttk.Entry(root, font="arial")
+        widget_input.grid(row=0, column=1)
+
+        widget_othe_input = ttk.Entry(root, font="arial black")
+        widget_othe_input.grid(row=2, column=1)
+        
+        widget_btn = ttk.Button(root, text="Regístrate")
+        widget_btn.grid(row=3, column=1)
+        
         root.mainloop()
     else:
         # Si no, cargamos la versión en terminal
