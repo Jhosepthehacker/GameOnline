@@ -76,21 +76,24 @@ class ConnectServer:
         self.PORT = 8080
         # Iniciamos la conexión al servidor
         self.connect_server()
-    
-    def connect_server(self):
+
+    try:
+        def connect_server(self):
         """Se conecta al servidor y maneja mensajes"""
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.connect((self.HOST, self.PORT))
+            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                s.connect((self.HOST, self.PORT))
 
-            while True:
-                # Recibir mensaje del servidor
-                self.data_receive = s.recv(1024)
-                self.message = self.data_receive.decode()
+                while True:
+                  # Recibir mensaje del servidor
+                    self.data_receive = s.recv(1024)
+                    self.message = self.data_receive.decode()
 
-                print(f"Mensaje recibido: {self.message}")
+                    print(f"Mensaje recibido: {self.message}")
 
-                # Responder al servidor
-                s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
+                  # Responder al servidor
+                    s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
+    except Attributeerror:
+        pass
 
 # ==========================
 #   Ejecución Principal
