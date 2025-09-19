@@ -93,7 +93,7 @@ class ConnectServer:
                   # Responder al servidor
                     s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
     except Attributeerror:
-        pass
+        print('Usted tiene un archivo llamado "socket", por favor cambiar el nombre de ese archivo o eliminarlo para poder importar la librería "socket" correctamente")
 
 # ==========================
 #   Ejecución Principal
