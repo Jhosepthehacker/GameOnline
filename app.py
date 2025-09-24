@@ -19,13 +19,16 @@ class Kernel(App):
         pass
 
 class DataBase:
-    def __init__(self, conn):
+    def __init__(self, conn, data_name):
         self.conn = conn
         # Guardamos y cerramos la conexión inicial
         self.conn.commit()
         self.conn.close()
+        self.data_name = data_name
         # Creamos la tabla si no existe
         self.create_table()
+        self.insert_data(self.data_name, None)
+        self.read_data()
     
     def create_table(self):
         """Crea la tabla 'data' si no existe"""
@@ -93,80 +96,77 @@ class ConnectServer:
                   # Responder al servidor
                     s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
     except Attributeerror:
-        print('Usted tiene un archivo llamado "socket", por favor cambiar el nombre de ese archivo o eliminarlo para poder importar la librería "socket" correctamente")
-
-# ==========================
-#   Ejecución Principal
-# ==========================
-if __name__ == '__main__':
-    # Inicializamos la base de datos
-    conn = sql.connect("logs_game.db")
-    db = DataBase(conn)
-
-    # Intentamos conectar al servidor
-    try:
-        app = ConnectServer()
-    except OSError:
-        pass
+        print('Usted tiene un archivo llamado "socket", por favor cambiar el nombre de ese archivo o eliminarlo para poder importar la librería "socket" correctamente"')
 
 # ==========================
 #   Interfaz / Terminal
 # ==========================
+
 try:
-    # Preguntamos al usuario su nombre
-    user_name = input("¿Cómo te llamas?: ").title()
+    try:
+      # Preguntamos al usuario su nombre
+        user_name = input("¿Cómo te llamas?: ").title()
 
-    # Preguntamos si está en un entorno gráfico
-    response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
-    response.strip()
+        print("\nLa contraseña a crear, protegerá sus datos")
+    
+        enter_password = input(f"\n¿{user_name}, podría ingresar una nueva contraseña para crear?: ")
 
-    # Si está en GUI, cargamos Tkinter
-    if response == "si" or response == "sí":
+        print(f"\nGracias por su cooperación {user_name} :)")
+
+        conn = sql.connect("logs_game.db")
+        app = DataBase(conn, user_name, enter_password)
+    
+      # Preguntamos si está en un entorno gráfico
+        response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
+        response.strip()
+
+      # Si está en GUI, cargamos Tkinter
+        if response == "si" or response == "sí":
+            root = Tk()
+            root.title("GameServer")
+            root.geometry("400x400")
+
+            widget_text_name = Label(root, text="Nombre:")
+            widget_text_name.grid(row=0, column=0)
+
+            widget_text_last_name = Label(root, text="Apellido:")
+            widget_text_last_name.grid(row=1, column=0)
+
+            widget_input = ttk.Entry(root, font="arial")
+            widget_input.grid(row=0, column=1)
+
+            widget_othe_input = ttk.Entry(root, font="arial black")
+            widget_othe_input.grid(row=2, column=1)
+        
+            widget_btn = ttk.Button(root, text="Regístrate")
+            widget_btn.grid(row=3, column=1)
+        
+            root.mainloop()
+        else:
+          # Si no, cargamos la versión en terminal
+            print("\nEl juego se generará en la terminal. Por favor espere un momento....")
+            sleep(1)
+
+    except EOFError:
+      # Si no hay entorno interactivo, se lanza una ventana gráfica por defecto
+        print("No estás en un entorno interactivo de terminal o consola")
         root = Tk()
         root.title("GameServer")
         root.geometry("400x400")
 
-        widget_text_name = Label(root, text="Nombre:")
-        widget_text_name.grid(row=0, column=0)
+        root.columnconfigure(1, weight=1)
+    
+        widget_btn = ttk.Button(text="Botón")
+        widget_btn.grid(row=1, column=1)
 
-        widget_text_last_name = Label(root, text="Apellido:")
-        widget_text_last_name.grid(row=1, column=0)
+        widget_input = ttk.Entry(root)
+        widget_input.grid(row=2, column=2)
 
-        widget_input = ttk.Entry(root, font="arial")
-        widget_input.grid(row=0, column=1)
+        menu_bar = Menu(root)
+    
+        file_menu = Menu(tearoff=0)
+        file_menu.add_command(label="Salir")
+        menu_bar.add_cascade(label="Opciones", menu=menu_bar)
 
-        widget_othe_input = ttk.Entry(root, font="arial black")
-        widget_othe_input.grid(row=2, column=1)
-        
-        widget_btn = ttk.Button(root, text="Regístrate")
-        widget_btn.grid(row=3, column=1)
-        
+        root.configure(menu=menu_bar)
         root.mainloop()
-    else:
-        # Si no, cargamos la versión en terminal
-        print("\nEl juego se generará en la terminal. Por favor espere un momento....")
-        sleep(1)
-
-except EOFError:
-    # Si no hay entorno interactivo, se lanza una ventana gráfica por defecto
-    print("No estás en un entorno interactivo de terminal o consola")
-    root = Tk()
-    root.title("GameServer")
-    root.geometry("400x400")
-
-    root.columnconfigure(1, weight=1)
-    
-    widget_btn = ttk.Button(text="Botón")
-    widget_btn.grid(row=1, column=1)
-
-    widget_input = ttk.Entry(root)
-    widget_input.grid(row=2, column=2)
-
-    menu_bar = Menu(root)
-    
-    file_menu = Menu(tearoff=0)
-    file_menu.add_command(label="Salir")
-    menu_bar.add_cascade(label="Opciones", menu=menu_bar)
-
-    root.configure(menu=menu_bar)
-    root.mainloop()
