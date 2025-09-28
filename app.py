@@ -80,24 +80,24 @@ class ConnectServer:
         # Iniciamos la conexión al servidor
         self.connect_server()
 
-    try:
-        def connect_server(self):
-        """Se conecta al servidor y maneja mensajes"""
-            with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                s.connect((self.HOST, self.PORT))
-
+    def connect_server(self, send_message):
+        try:
+            try:
                 while True:
-                  # Recibir mensaje del servidor
-                    self.data_receive = s.recv(1024)
-                    self.message = self.data_receive.decode()
+                    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+                        s.connect((self.HOST, self.PORT))
 
-                    print(f"Mensaje recibido: {self.message}")
+                        self.data = s.recv(1024)
+                        self.message = self.data.decode()
 
-                  # Responder al servidor
-                    s.sendall("¡Hola, desde el cliente!".encode('utf-8'))
-    except Attributeerror:
-        print('Usted tiene un archivo llamado "socket", por favor cambiar el nombre de ese archivo o eliminarlo para poder importar la librería "socket" correctamente"')
+                        print(f"[•] Mensaje Recibido: {self.message}")
+                        s.sendall(f"{send_message}".encode('utf-8'))
 
+            except AttributeError:
+                print("Usted tiene un archivo llamado 'socket', lo que impide la ejecución de la conexión. Por favor cambie de nombre o elimine el archivo para continuar")
+
+        except OSError as e:
+            print(f"Error en la conexión: {e}")
 # ==========================
 #   Interfaz / Terminal
 # ==========================
@@ -148,25 +148,28 @@ try:
             sleep(1)
 
     except EOFError:
-      # Si no hay entorno interactivo, se lanza una ventana gráfica por defecto
-        print("No estás en un entorno interactivo de terminal o consola")
-        root = Tk()
-        root.title("GameServer")
-        root.geometry("400x400")
+        try:
+        # Si no hay entorno interactivo, se lanza una ventana gráfica por defecto
+            print("No estás en un entorno interactivo de terminal o consola")
+            root = Tk()
+            root.title("GameServer")
+            root.geometry("400x400")
 
-        root.columnconfigure(1, weight=1)
+            root.columnconfigure(1, weight=1)
     
-        widget_btn = ttk.Button(text="Botón")
-        widget_btn.grid(row=1, column=1)
+            widget_btn = ttk.Button(text="Botón")
+            widget_btn.grid(row=1, column=1)
 
-        widget_input = ttk.Entry(root)
-        widget_input.grid(row=2, column=2)
+            widget_input = ttk.Entry(root)
+            widget_input.grid(row=2, column=2)
 
-        menu_bar = Menu(root)
+            menu_bar = Menu(root)
     
-        file_menu = Menu(tearoff=0)
-        file_menu.add_command(label="Salir")
-        menu_bar.add_cascade(label="Opciones", menu=menu_bar)
+            file_menu = Menu(tearoff=0)
+            file_menu.add_command(label="Salir")
+            menu_bar.add_cascade(label="Opciones", menu=menu_bar)
 
-        root.configure(menu=menu_bar)
-        root.mainloop()
+            root.configure(menu=menu_bar)
+            root.mainloop()
+        except Tcl.Error as e:
+            print(f"Error fatal de interacción: {e}, usted no está en un entorno interactivo de terminal, ni en un entorno interactivo de interfaz gráfica (GUI). El problema finalizará porqué no hay entorno interactivo ni interfaz para interactuar con usuario :(")
