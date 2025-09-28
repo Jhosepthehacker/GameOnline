@@ -172,3 +172,4 @@ try:
             root.mainloop()
         except Tcl.Error as e:
             print(f"Error fatal de interacción: {e}, usted no está en un entorno interactivo de terminal, ni en un entorno interactivo de interfaz gráfica (GUI). El problema finalizará porqué no hay entorno interactivo ni interfaz para interactuar con usuario :(")
+            sys.exit()
