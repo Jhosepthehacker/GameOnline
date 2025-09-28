@@ -15,8 +15,24 @@ const questionForTheUser = prompt("¿Quiéres jugar a adivinar un número del 1 
 if (questionForTheUser === "sí" || questionForTheUser === "si"){
   console.log("Empezando el juego....");
 
+  const number = undefined;
+  let trys = null;
+
   while true{
-    const answerOfUser = promp();
+    let answerOfUser = prompt("Adivina un número del 1 al 100");
+    trys += 1;
+    
+    console.log("");
+    
+    if (answerOfUser > number){
+      console.log(`El número ${answerOfUser} es demasiado alto`);
+    }
+    else if (answerOfUser < number){
+      console.log(`El número ${answerOfUser} es demasiado bajo`);
+    }
+    else if (answerOfUser === number){
+      console.log(`Felicidades has encontrado el número ${answerOfUser}, en ${trys} intentos`);
+    }
 }
 }
 }
