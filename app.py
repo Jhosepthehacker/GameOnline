@@ -1,10 +1,9 @@
 # ==========================
 #   Importación de módulos
 # ==========================
-import socket        # Para manejar la conexión cliente-servidor
-import sys           # Para salir del programa si es necesario
-import sqlite3 as sql  # Para manejar la base de datos SQLite
-import threading as thread  # Para posibles hilos (no usado aún)
+import socket               # Para manejar la conexión cliente-servidor
+import sys                  # Para salir del programa si es necesario
+import sqlite3 as sql       # Para manejar la base de datos SQLite  # Para posibles hilos (no usado aún)
 from tkinter import *       # Para la interfaz gráfica
 from tkinter import ttk, messagebox, Toplevel
 from kivy.app import App    # Importado, próximamente se utilizará
