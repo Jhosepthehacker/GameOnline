@@ -1,3 +1,4 @@
+function game(){
 const messageWarning = "¡Si no usas CommonJs, no podrás interactuar con este juego!";
 
 console.log(messageHello);
@@ -12,5 +13,12 @@ const questionForTheUser = prompt("¿Quiéres jugar a adivinar un número del 1 
 // Se comprueban dos 'si', uno con acento y otro sin acento (para aclarar la confusión en caso de que si la hay)
 
 if (questionForTheUser === "sí" || questionForTheUser === "si"){
-  console.log("Empezando el juego....")
+  console.log("Empezando el juego....");
+
+  while true{
+    const answerOfUser = promp();
 }
+}
+}
+
+game();
