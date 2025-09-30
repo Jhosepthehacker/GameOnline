@@ -2,7 +2,7 @@ function game(){
   const readLineSync = require('readline-sync');
   const messageWarning = "¡Si no usas CommonJs, no podrás interactuar con este juego!";
 
-  console.log(messageHello);
+  console.log(messageWarning);
   console.log("");
 
   const userName = readLineSync.question("¿Cómo te llamas?: ");
