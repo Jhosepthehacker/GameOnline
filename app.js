@@ -1,15 +1,15 @@
 function game(){
-  const readLineSync = require('readline-sync');
+  const readlineSync = require('readline-sync');
   const messageWarning = "¡Si no usas CommonJs, no podrás interactuar con este juego!";
 
   console.log(messageWarning);
   console.log("");
 
-  const userName = readLineSync.question("¿Cómo te llamas?: ");
+  const userName = readlineSync.question("¿Cómo te llamas?: ");
   console.log(`¡Qué bonito nombre ${userName}!`);
   console.log("");
 
-  const questionForTheUser = prompt("¿Quiéres jugar a adivinar un número del 1 al 100?: ")
+  const questionForTheUser = readlineSync.question("¿Quiéres jugar a adivinar un número del 1 al 100?: ")
 
   // Se comprueban dos 'si', uno con acento y otro sin acento (para aclarar la confusión en caso de que si la hay)
 
@@ -20,7 +20,7 @@ function game(){
     let trys = null;
 
     while (true){
-      let answerOfUser = prompt("Adivina un número del 1 al 100");
+      let answerOfUser = readlineSync.question("Adivina un número del 1 al 100");
       trys += 1;
     
       console.log("");
