@@ -19,7 +19,7 @@ function game(){
     const number = undefined;
     let trys = null;
 
-    while true{
+    while (true){
       let answerOfUser = prompt("Adivina un número del 1 al 100");
       trys += 1;
     
