@@ -101,15 +101,22 @@ class ConnectServer:
 def game_in_terminal():
     try:
         try:
-            number = random.randint(1, 100)
-            trys = 0
-            while True:
-                number_to_usr = input(f"{user_name} adivina un número del 1 al 100: ")
-                trys += 1
+            try:
+                number = random.randint(1, 100)
+                trys = 0
+                while True:
+                    number_to_usr = input(f"{user_name} adivina un número del 1 al 100: ")
+                    trys += 1
 
-                if number_to_usr < number:
-                    print(f"El número {number_to_usr} es demasiado bajo al número secreto")
-                elif
+                    if number_to_usr < number:
+                        print(f"El número {number_to_usr} es demasiado bajo al número secreto")
+                    elif number_to_usr > number:
+                        print(f"El número {number_to_usr} es demasiado alto al número secreto")
+                    elif number_to_usr == number:
+                        print(f"Felicidades {user_name}, has encontrado el número {number} en {trys} intentos")
+                        break
+            except ValueError:
+                print("Ingresa un número, no texto")
         except NameError:
             print("Ha ocurrido un problema")
             sleep(1)
