@@ -97,6 +97,27 @@ class ConnectServer:
 
         except OSError as e:
             print(f"Error en la conexión: {e}")
+
+def game_in_terminal():
+    try:
+        try:
+            number = random.randint(1, 100)
+            trys = 0
+            while True:
+                number_to_usr = input(f"{user_name} adivina un número del 1 al 100: ")
+                trys += 1
+
+                if number_to_usr < number:
+                    print(f"El número {number_to_usr} es demasiado bajo al número secreto")
+                elif
+        except NameError:
+            print("Ha ocurrido un problema")
+            sleep(1)
+            sys.exit()
+
+    except EOFError:
+        print("No estás en un entorno interactivo de terminal o consola")
+
 # ==========================
 #   Interfaz / Terminal
 # ==========================
@@ -145,6 +166,8 @@ try:
           # Si no, cargamos la versión en terminal
             print("\nEl juego se generará en la terminal. Por favor espere un momento....")
             sleep(1)
+
+            game_in_terminal()
 
     except EOFError:
         try:
