@@ -1,5 +1,8 @@
-function game(){
+game = () => {
   const readlineSync = require('readline-sync');
+  const Random = require('random-js').Random;
+  const random = new Random()
+  
   const messageWarning = "¡Si no usas CommonJs, no podrás interactuar con este juego!";
 
   console.log(messageWarning);
@@ -16,7 +19,7 @@ function game(){
   if (questionForTheUser === "sí" || questionForTheUser === "si"){
     console.log("Empezando el juego....");
 
-    const number = undefined;
+    const number = random.integer(1, 100); //Próximamente se reemplazará "random-js" y se usará "Math.floor()" y "Math.random()" (recomendado).
     let trys = null;
 
     while (true){
@@ -34,8 +37,8 @@ function game(){
       else if (answerOfUser === number){
         console.log(`Felicidades has encontrado el número ${answerOfUser}, en ${trys} intentos`);
     }
-}
-}
+  }
+ }
 }
 
 game();
