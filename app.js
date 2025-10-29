@@ -1,7 +1,7 @@
 game = () => {
   const readlineSync = require('readline-sync');
   const Random = require('random-js').Random;
-  const random = new Random()
+  const random = new Random();
   
   const messageWarning = "¡Si no usas CommonJs, no podrás interactuar con este juego!";
 
@@ -19,11 +19,11 @@ game = () => {
   if (questionForTheUser === "sí" || questionForTheUser === "si"){
     console.log("Empezando el juego....");
 
-    const number = random.integer(1, 100); //Próximamente se reemplazará "random-js" y se usará "Math.floor()" y "Math.random()" (recomendado).
-    let trys = null;
+    const number = random.integer(1, 100); // Próximamente se reemplazará "random-js" y se usará "Math.floor()" y "Math.random()" (recomendado).
+    let trys = 0;
 
     while (true){
-      let answerOfUser = readlineSync.question("Adivina un número del 1 al 100");
+      let answerOfUser = readlineSync.question("Adivina un número del 1 al 100: ");
       trys += 1;
     
       console.log("");
