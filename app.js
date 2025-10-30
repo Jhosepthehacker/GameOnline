@@ -39,11 +39,23 @@ game = () => {
         console.log("");
 
         const levelUpGame = readline.question(`${userName} deseas subir la dificultad: `);
-        const notSpaces = 0;
+        console.log("");
+        let notSpaces = 0 "";
         
         for (let i = 0; i < levelUpGame.length; i++) {
-          if (levelUpGame[i] != " ") {
-            
+          if (levelUpGame[i] !== " ") {
+            notSpaces += levelUpGame[i];
+            if (notSpaces === "si" || notSpaces == "sí") {
+              console.log("Empezando el juego....");
+            }
+            else if (notSpaces === "no" {
+              console.log(`Gracias por jugar ${userName}`);
+              break
+            }
+            else {
+              console.log(levelUpGame + " no es una respuesta válida");
+              break
+            }
           }
         }
     }
