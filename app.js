@@ -36,6 +36,16 @@ game = () => {
     }
       else if (answerOfUser === number){
         console.log(`Felicidades has encontrado el número ${answerOfUser}, en ${trys} intentos`);
+        console.log("");
+
+        const levelUpGame = readline.question(`${userName} deseas subir la dificultad: `);
+        const notSpaces = 0;
+        
+        for (let i = 0; i < levelUpGame.length; i++) {
+          if (levelUpGame[i] != " ") {
+            
+          }
+        }
     }
   }
  }
