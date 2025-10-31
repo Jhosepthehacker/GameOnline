@@ -259,7 +259,7 @@ def game_in_terminal(option):
 
         if move_player in ("w", "s", "a", "d"):
 		    move_character(move_player)
-		    time.sleep(1)
+		    sleep(1)
 		    os.system('clear')
 	    elif move_player == "q":
 		    time.sleep(1)
