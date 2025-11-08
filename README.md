@@ -30,6 +30,8 @@ python3 app.py
 
 ```bash
 g++ app.cpp -o app
+chmod +x app
+./app
 ```
 
 <div style="display: flex;">
