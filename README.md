@@ -18,6 +18,7 @@
 apt update
 apt install python3
 apt install build-essential
+apt install bash
 ```
 
 > En Python (app.py)
@@ -32,6 +33,13 @@ python3 app.py
 g++ app.cpp -o app
 chmod +x app
 ./app
+```
+
+> En Bash (setup.sh)
+
+```bash
+chmod +x setup.sh
+./setup.sh
 ```
 
 <div style="display: flex;">
