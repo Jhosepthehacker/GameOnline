@@ -26,7 +26,7 @@ apt install build-essential
 python3 app.py
 ```
 
-# En C++ (app.cpp)
+> En C++ (app.cpp)
 
 ```bash
 g++ app.cpp -o app
