@@ -9,6 +9,8 @@ void game() {
     std:: cout << "Adivina un número del 1 al 100: ";
     std:: cin >> userPlaying;
 
+    std:: cout << "\n" << std:: endl;
+
     if (userPlaying < number) {
       std:: cout << "Demasiado bajo" << std:: endl;
     }
