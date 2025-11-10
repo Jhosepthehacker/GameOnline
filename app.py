@@ -132,51 +132,51 @@ def game_in_terminal(option):
         import sqlite3 as sql
 
         class DataBase:
-        def __init__(self, conn, position, inventory):
-            self.conn = conn
-            self.conn.commit()
-            self.conn.close()
+            def __init__(self, conn, position, inventory):
+                self.conn = conn
+                self.conn.commit()
+                self.conn.close()
 
-            self.create_table()
-            self.insert_data(position, inventory)
+                self.create_table()
+                self.insert_data(position, inventory)
 
-        def create_table(self):
-            try:
-                self.conn = sql.connect("game_logs.db")
-                self.cursor = self.conn.cursor()
-                self.cursor.execute(
-		            """CREATE TABLE IF NOT EXISTS logs(
-		                position TEXT,
-		                inventory TEXT
+            def create_table(self):
+                try:
+                    self.conn = sql.connect("game_logs.db")
+                    self.cursor = self.conn.cursor()
+                    self.cursor.execute(
+		                """CREATE TABLE IF NOT EXISTS logs(
+		                    position TEXT,
+		                    inventory TEXT
 		    )"""
 )
 
-            finally:
-                self.conn.commit()
-                self.conn.close()
+                finally:
+                    self.conn.commit()
+                    self.conn.close()
 
-        def insert_data(self, position, inventory):
-            try:
-                self.conn = sql.connect("game_logs.db")
-                self.cursor = self.conn.cursor()
-                self.instruction = f"INSERT INTO logs VALUES('{position}', '{inventory}')"
-                self.cursor.execute(self.instruction)
-            finally:
-                self.conn.commit()
-                self.conn.close()
+            def insert_data(self, position, inventory):
+                try:
+                    self.conn = sql.connect("game_logs.db")
+                    self.cursor = self.conn.cursor()
+                    self.instruction = f"INSERT INTO logs VALUES('{position}', '{inventory}')"
+                    self.cursor.execute(self.instruction)
+                finally:
+                    self.conn.commit()
+                    self.conn.close()
 
-         def read_data(self):
-             try:
-                 self.conn = sql.connect("game_logs.db")
-                 self.instruction = "SELECT * FROM logs;"
-                 self.cursor = self.conn.cursor()
-                 self.cursor.execute(self.instruction)
-                 data = self.cursor.fetchall()
+             def read_data(self):
+                 try:
+                     self.conn = sql.connect("game_logs.db")
+                     self.instruction = "SELECT * FROM logs;"
+                     self.cursor = self.conn.cursor()
+                     self.cursor.execute(self.instruction)
+                     data = self.cursor.fetchall()
 
                  return data
-            finally:
-                self.conn.commit()
-                self.conn.close()
+                finally:
+                    self.conn.commit()
+                    self.conn.close()
 
     map = [
        list("  ###########    #########"),
