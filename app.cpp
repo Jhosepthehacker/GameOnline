@@ -18,6 +18,7 @@ void game() {
     else if (userPlaying == number) {
       std:: cout << "Felicidades has encontrado el número " << number << " en " << trys << " intentos" << std:: endl;
       break;
+    }
   }
 }
 
