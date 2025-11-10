@@ -12,7 +12,7 @@ void game() {
     if (userPlaying < number) {
       std:: cout << "Demasiado bajo" << std:: endl;
     }
-    else if (userPlaying < number) {
+    else if (userPlaying > number) {
       std:: cout << "Demasiado alto" << std:: endl;
     }
     else if (userPlaying == number) {
