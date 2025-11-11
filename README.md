@@ -10,7 +10,7 @@
 >[!TIP]
 > **¡Contáctanos en nuestra comunidad de discord!**
 
-## ¿Cómo ejecutar los juegos para lograr una experiencia considerable?
+## ¿Cómo ejecutar los juegos para lograrinteractuar con ellos?
 
 > Instalación De Dependencias
 
