@@ -2,39 +2,41 @@
 
 // Proximamente se implementará "SDL2"
 
+using namespace std;
+
 namespace message {
-  std:: string hello = "Hola Usuario";
+  string hello = "Hola Usuario";
 }
 
 void game() {
-  std:: string name;
+  string name;
   
-  std:: cout << message:: hello << std:: endl;
-  std:: cout << "\n";
+  cout << message:: hello << endl;
+  cout << "\n";
 
-  std:: cout << "¿Cómo te llamas?: ";
-  std:: cin >> name;
-  std:: cout << "\n";
+  cout << "¿Cómo te llamas?: ";
+  cin >> name;
+  cout << "\n";
   
-  std:: cout << "Mucho gusto " + name << std:: endl;
+  cout << "Mucho gusto " + name << endl;
   
   int userPlaying;
   int number = 20; // Se está trabajando el problema del random (en desarrollo....)
   int trys = 0;
 
   while (true) {
-    std:: cout << "Adivina un número del 1 al 100: ";
-    std:: cin >> userPlaying;
-    std:: cout << "\n";
+    cout << "Adivina un número del 1 al 100: ";
+    cin >> userPlaying;
+    cout << "\n";
 
     if (userPlaying < number) {
-      std:: cout << "Demasiado bajo" << std:: endl;
+      cout << "Demasiado bajo" << endl;
     }
     else if (userPlaying > number) {
-      std:: cout << "Demasiado alto" << std:: endl;
+      cout << "Demasiado alto" << endl;
     }
     else if (userPlaying == number) {
-      std:: cout << "Felicidades has encontrado el número " << number << " en " << trys << " intentos" << std:: endl;
+      cout << "Felicidades has encontrado el número " << number << " en " << trys << " intentos" << endl;
       break;
     }
   }
