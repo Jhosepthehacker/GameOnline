@@ -218,7 +218,7 @@ try:
         is_insert = app.sql_command("SELECT trys FROM user;")
 
         if is_insert[0][0] < 1:
-            app.sql_command(f"INSERT INTO user (id, name, trys) VALUES (1, '{user_name}', 1);")
+            app.sql_command(f"INSERT INTO user (id, name, trys) VALUES (1, '{user_name}', 1);") # Vulnerabilidad catastrófica
     
       # Preguntamos si está en un entorno gráfico
         response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
