@@ -14,61 +14,24 @@ from time import sleep      # Para hacer pausas (simular carga)
 #   Clase Base de Datos
 # ==========================
 
-class Kernel(App):
-    def __init__(self):
-        pass
-
 class DataBase:
-    def __init__(self, conn, data_name):
+    def __init__(self, conn):
         self.conn = conn
         # Guardamos y cerramos la conexión inicial
         self.conn.commit()
         self.conn.close()
-        self.data_name = data_name
-        # Creamos la tabla si no existe
-        self.create_table()
-        self.insert_data(self.data_name, None)
-        self.read_data()
-    
-    def create_table(self):
-        """Crea la tabla 'data' si no existe"""
-        self.conn = sql.connect("logs_game.db")
-        self.cursor = self.conn.cursor()
-        self.cursor.execute(
-           """CREATE TABLE IF NOT EXISTS data(
-                name TEXT,
-                money INTEGER
-           )"""
-)
-        self.conn.commit()
-        self.conn.close()
 
-    def insert_data(self, name, money):
-        """Inserta un registro con nombre y dinero"""
-        self.conn = sql.connect("logs_game.db")
-        self.cursor = self.conn.cursor()
-        # ⚠️ Aquí sería mejor usar parámetros en vez de f-string para evitar SQL Injection
-        self.instruction = f"INSERT INTO data VALUES('{name}', {money})"
-        self.cursor.execute(self.instruction)
-        self.conn.commit()
-        self.close()
+    def sql_command(self, command):
+		try:
+			self.conn = sql.connect("logs_game.db")
+			self.cursor = self.conn.cursor()
+			self.cursor.execute(command)
 
-    def read_data(self):
-        """Lee y muestra todos los registros guardados"""
-        self.conn = sql.connect("logs_game.db")
-        self.cursor = self.conn.cursor()
-        self.instruction = "SELECT * FROM data;"
-        self.cursor.execute(self.instruction)
-        self.save_data = self.cursor.fetchall()
-        self.conn.commit()
-        self.conn.close()
-
-        # Mostramos la información recuperada
-        for i in self.save_data:
-            self.save_name = i[0]
-            self.save_money = i[1]
-        print(f"Nombre: {self.save_name}")
-        print(f"Dinero en el juego: {self.save_money}")
+		    self.data = self.cursor.fetchall()
+		    return self.data
+		finally:
+			self.conn.commit()
+			self.conn.close()
 
 # ==========================
 #   Clase Conexión Cliente
@@ -128,28 +91,7 @@ def game_in_terminal(option):
         except EOFError:
             print("No estás en un entorno interactivo de terminal o consola")
     elif option == "2":
-        import random
-        import sqlite3 as sql
-
-        class DataBase:
-            def __init__(self, conn, command):
-                self.conn = conn
-				self.command = command
-                self.conn.commit()
-                self.conn.close()
-
-            def sql_command(self):
-                try:
-                    self.conn = sql.connect("game_logs.db")
-                    self.cursor = self.conn.cursor()
-                    self.cursor.execute(self.command)
-
-				    self.data = self.cursor.fetchall()
-					return self.data
-                finally:
-                    self.conn.commit()
-                    self.conn.close()
-
+		pass
 
     map = [
        list("  ###########    #########"),
@@ -264,7 +206,7 @@ try:
         print(f"\nGracias por su cooperación {user_name} :)")
 
         conn = sql.connect("logs_game.db")
-        app = DataBase(conn, user_name, enter_password)
+        app = DataBase(conn)
     
       # Preguntamos si está en un entorno gráfico
         response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
