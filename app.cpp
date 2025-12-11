@@ -21,7 +21,7 @@ void game() {
   cout << "Mucho gusto " + name << endl;
   
   int userPlaying;
-  int number = 20; // Se está trabajando el problema del random (en desarrollo....)
+  int number = name.length(); // Se está trabajando el problema del random (en desarrollo....)
   int trys = 0;
 
   while (true) {
