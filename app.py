@@ -1,13 +1,13 @@
 # ==========================
 #   Importación de módulos
 # ==========================
+
 import socket               # Para manejar la conexión cliente-servidor
 import sys                  # Para salir del programa si es necesario
 import os
 import sqlite3 as sql       # Para manejar la base de datos SQLite  # Para posibles hilos (no usado aún)
 from tkinter import *       # Para la interfaz gráfica
 from tkinter import ttk, messagebox, Toplevel
-from kivy.app import App    # Importado, próximamente se utilizará
 from time import sleep      # Para hacer pausas (simular carga)
 
 # ==========================
@@ -100,9 +100,6 @@ def game_in_terminal(option):
        list("  #         #####        #"),
        list("  ##########     #########")
 ]
-
-    for i in map:
-        print(len(i))
 
     print(
            """
