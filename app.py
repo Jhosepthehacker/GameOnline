@@ -261,7 +261,7 @@ try:
             print("\nEl juego se generará en la terminal. Por favor espere un momento....\n")
             sleep(1)
 
-            while True
+            while True:
             
                 print("""
   ✓ Adivina un número del 1 al 100 (Escribe "1")
