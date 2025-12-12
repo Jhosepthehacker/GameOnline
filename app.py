@@ -134,20 +134,20 @@ def game_in_terminal(option):
 	
         row, column = player_row, player_column
 
-	    if direction == "w":
-		    row -= 1
+        if direction == "w":
+            row -= 1
         elif direction == "s":
-		    row += 1
-	    elif direction == "a":
-		    column -= 1
-	    elif direction == "d":
-		    column += 1
+            row += 1
+        elif direction == "a":
+            column -= 1
+        elif direction == "d":
+            column += 1
 
-	    next_row, next_column = row, column
+        next_row, next_column = row, column
 
-	    if map[next_row][next_column] != "#":
+        if map[next_row][next_column] != "#":
             if map[next_row][next_column] == "E":
-			    possible_attack = random.randint(1, 6)
+                possible_attack = random.randint(1, 6)
 
                 if possible_attack in (1, 2, 3):
                     lifes -= 1
