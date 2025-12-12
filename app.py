@@ -91,7 +91,7 @@ def game_in_terminal(option):
         except EOFError:
             print("No estás en un entorno interactivo de terminal o consola")
     elif option == "2":
-		pass
+        pass
 
     map = [
        list("  ###########    #########"),
