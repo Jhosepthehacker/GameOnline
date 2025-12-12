@@ -225,7 +225,7 @@ try:
 					break
                 elif user_name.split().strip() in ("SELECT", "DROP", "WHERE", "UPDATE", "SET", "select", "drop", "where", "update", "set"):
 					print("No se aceptan comandos SQL en el input")
-					break
+                    break
 				else:
                     app.sql_command(f"INSERT INTO user (id, name, trys) VALUES (1, '{user_name}', 1);")
 				    break
