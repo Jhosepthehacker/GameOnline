@@ -3,9 +3,9 @@
 #   Importación de módulos
 # ==========================
 
-import socket               # Para manejar la conexión cliente-servidor
 import sys                  # Para salir del programa si es necesario
 import os
+import requests
 import sqlite3 as sql       # Para manejar la base de datos SQLite  # Para posibles hilos (no usado aún)
 from tkinter import *       # Para la interfaz gráfica
 from tkinter import ttk, messagebox, Toplevel
@@ -34,34 +34,13 @@ class DataBase:
             self.conn.commit()
             self.conn.close()
 
-# ==========================
-#   Clase Conexión Cliente
-# ==========================
-class ConnectServer:
-    def __init__(self):
-        self.HOST = 'localhost'
-        self.PORT = 8080
-        # Iniciamos la conexión al servidor
-        self.connect_server()
+class ConnectToServer:
+	def __init__(self):
+		self.API_URL = "https://example.com" # Un ejemplo temporal
 
-    def connect_server(self, send_message):
-        try:
-            try:
-                while True:
-                    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-                        s.connect((self.HOST, self.PORT))
-
-                        self.data = s.recv(1024)
-                        self.message = self.data.decode()
-
-                        print(f"[•] Mensaje Recibido: {self.message}")
-                        s.sendall(f"{send_message}".encode('utf-8'))
-
-            except AttributeError:
-                print("Usted tiene un archivo llamado 'socket', lo que impide la ejecución de la conexión. Por favor cambie de nombre o elimine el archivo para continuar")
-
-        except OSError as e:
-            print(f"Error en la conexión: {e}")
+    def send_requests(self):
+		self.response = requests.get(self.API_URL)
+		# Implementando....
 
 def game_in_terminal(option):
     if option == "1":
