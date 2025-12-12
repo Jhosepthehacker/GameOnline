@@ -22,16 +22,16 @@ class DataBase:
         self.conn.close()
 
     def sql_command(self, command):
-	    try:
-			self.conn = sql.connect("logs_game.db")
-			self.cursor = self.conn.cursor()
-			self.cursor.execute(command)
+        try:
+            self.conn = sql.connect("logs_game.db")
+            self.cursor = self.conn.cursor()
+            self.cursor.execute(command)
 
-		    self.data = self.cursor.fetchall()
-		    return self.data
-	    finally:
-			self.conn.commit()
-			self.conn.close()
+            self.data = self.cursor.fetchall()
+            return self.data
+        finally:
+            self.conn.commit()
+            self.conn.close()
 
 # ==========================
 #   Clase Conexión Cliente
