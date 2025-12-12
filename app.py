@@ -272,27 +272,3 @@ try:
                 question = input("Elige un juego: ").strip()
             
                 game_in_terminal(question)
-
-    except EOFError:
-        # Si no hay entorno interactivo, se lanza una ventana gráfica por defecto
-        print("No estás en un entorno interactivo de terminal o consola")
-        root = Tk()
-        root.title("GameServer")
-        root.geometry("400x400")
-
-        root.columnconfigure(1, weight=1)
-    
-        widget_btn = ttk.Button(text="Botón")
-        widget_btn.grid(row=1, column=1)
-
-        widget_input = ttk.Entry(root)
-        widget_input.grid(row=2, column=2)
-
-        menu_bar = Menu(root)
-    
-        file_menu = Menu(tearoff=0)
-        file_menu.add_command(label="Salir")
-        menu_bar.add_cascade(label="Opciones", menu=menu_bar)
-
-        root.configure(menu=menu_bar)
-        root.mainloop()
