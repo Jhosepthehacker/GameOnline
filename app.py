@@ -192,83 +192,77 @@ def game_in_terminal(option):
 #   Interfaz / Terminal
 # ==========================
 
-try:
-    try:
       # Preguntamos al usuario su nombre
-        user_name = input("¿Cómo te llamas?: ").title()
+user_name = input("¿Cómo te llamas?: ").title()
 
-        print("\nLa contraseña a crear, protegerá sus datos")
+print("\nLa contraseña a crear, protegerá sus datos")
     
-        enter_password = input(f"\n¿{user_name}, podría ingresar una nueva contraseña para crear?: ")
+enter_password = input(f"\n¿{user_name}, podría ingresar una nueva contraseña para crear?: ")
 
-        print(f"\nGracias por su cooperación {user_name} :)")
+print(f"\nGracias por su cooperación {user_name} :)")
 
-        conn = sql.connect("logs_game.db")
-        app = DataBase(conn)
-        app.sql_command(
-			"""CREATE TABLE IF NOT EXISTS user(
-			    id INTEGER,
-			    name TEXT,
-				age INTEGER,
-				trys INTEGER
-			);"""
-		)
+conn = sql.connect("logs_game.db")
+app = DataBase(conn)
+app.sql_command(
+	"""CREATE TABLE IF NOT EXISTS user(
+	      id INTEGER,
+		  name TEXT,
+		  age INTEGER,
+		  trys INTEGER
+	);"""
+)
 
-        # Por si acaso se añadido la columna 'id'
+# Por si acaso se añadido la columna 'id'
 
-        is_insert = app.sql_command("SELECT trys FROM user;")
+is_insert = app.sql_command("SELECT trys FROM user;")
 
-        if is_insert[0][0] < 1:
-            for i in user_name:
-                if i in (';', '(', ')', "'", '*'):
-                    print("Solo se aceptan letras (no carácteres ni números)")
-                    break
-                elif user_name.split().strip() in ("SELECT", "DROP", "WHERE", "UPDATE", "SET", "select", "drop", "where", "update", "set"):
-                    print("No se aceptan comandos SQL en el input")
-                    break
-                else:
-                    app.sql_command(f"INSERT INTO user (id, name, trys) VALUES (1, '{user_name}', 1);")
-                    break
-    
-      # Preguntamos si está en un entorno gráfico
-        response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
-        response.strip()
-
-      # Si está en GUI, cargamos Tkinter
-        if response == "si" or response == "sí":
-            root = Tk()
-            root.title("GameServer")
-            root.geometry("400x400")
-
-            widget_text_name = Label(root, text="Nombre:")
-            widget_text_name.grid(row=0, column=0)
-
-            widget_text_last_name = Label(root, text="Apellido:")
-            widget_text_last_name.grid(row=1, column=0)
-
-            widget_input = ttk.Entry(root, font="arial")
-            widget_input.grid(row=0, column=1)
-
-            widget_othe_input = ttk.Entry(root, font="arial black")
-            widget_othe_input.grid(row=2, column=1)
-        
-            widget_btn = ttk.Button(root, text="Regístrate")
-            widget_btn.grid(row=3, column=1)
-        
-            root.mainloop()
+if is_insert[0][0] < 1:
+    for i in user_name:
+        if i in (';', '(', ')', "'", '*'):
+            print("Solo se aceptan letras (no carácteres ni números)")
+            break
+        elif user_name.split().strip() in ("SELECT", "DROP", "WHERE", "UPDATE", "SET", "select", "drop", "where", "update", "set"):
+            print("No se aceptan comandos SQL en el input")
+            break
         else:
-          # Si no, cargamos la versión en terminal
-            print("\nEl juego se generará en la terminal. Por favor espere un momento....\n")
-            sleep(1)
+            app.sql_command(f"INSERT INTO user (id, name, trys) VALUES (1, '{user_name}', 1);")
+            break
+    
+# Preguntamos si está en un entorno gráfico
+response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
+response.strip()
 
-            while True:
-            
-                print("""
+# Si está en GUI, cargamos Tkinter
+if response == "si" or response == "sí":
+    root = Tk()
+    root.title("GameServer")
+    root.geometry("400x400")
+
+    widget_text_name = Label(root, text="Nombre:")
+    widget_text_name.grid(row=0, column=0)
+
+    widget_text_last_name = Label(root, text="Apellido:")
+    widget_text_last_name.grid(row=1, column=0)
+
+    widget_input = ttk.Entry(root, font="arial")
+    widget_input.grid(row=0, column=1)
+
+    widget_othe_input = ttk.Entry(root, font="arial black")
+    widget_othe_input.grid(row=2, column=1)
+        
+    widget_btn = ttk.Button(root, text="Regístrate")
+    widget_btn.grid(row=3, column=1)
+        
+    root.mainloop()
+else:
+          # Si no, cargamos la versión en terminal
+    print("\nEl juego se generará en la terminal. Por favor espere un momento....\n")
+    sleep(1)
+
+    print("""
   ✓ Adivina un número del 1 al 100 (Escribe "1")
   ✓ Mapa y exploración (Escribe "2")
-            """
+          """
 )
-            
-                question = input("Elige un juego: ").strip()
-            
-                game_in_terminal(question)
+    question = input("Elige un juego: ").strip()
+    game_in_terminal(question)
