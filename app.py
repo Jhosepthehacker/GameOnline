@@ -166,7 +166,7 @@ def game_in_terminal(option):
              print("No puedes atravesar la barrera (límite del juego)")
 
     while True:
-	    print_map()
+        print_map()
 
         move_player = input("Escribe (w/s/a/d) para moverte, 'q' para salir: ").lower().strip()
 
