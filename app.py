@@ -170,21 +170,21 @@ def game_in_terminal(option):
         move_player = input("Escribe (w/s/a/d) para moverte, 'q' para salir: ").lower().strip()
 
         if move_player in ("w", "s", "a", "d"):
-		    move_character(move_player)
-		    sleep(1)
-		    os.system('clear')
-	    elif move_player == "q":
-		    time.sleep(1)
-		    sys.exit()
-	    elif move_player == "i":
-	        print("Inventario:\n")
+            move_character(move_player)
+            sleep(1)
+            os.system('clear')
+        elif move_player == "q":
+            time.sleep(1)
+            sys.exit()
+        elif move_player == "i":
+            print("Inventario:\n")
 	    
-	        for i in inventory:
-	            print(f"  {i}")
+            for i in inventory:
+                print(f"  {i}")
 	    elif move_player == "x":
-		    pass
-	    else:
-		    print("Ingresa un caracter válido")
+            pass
+        else:
+            print("Ingresa un caracter válido")
         
 
 # ==========================
