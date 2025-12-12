@@ -152,9 +152,9 @@ def game_in_terminal(option):
                 if possible_attack in (1, 2, 3):
                     lifes -= 1
                     print("Has perdido 1 vida\n")
-			    elif possible_attack in (4, 5, 6):
+                elif possible_attack in (4, 5, 6):
                     lifes_enemy -= 1
-				    print("El enemigo ha perdido una vida")
+                    print("El enemigo ha perdido una vida")
 
 		    else:
                  map[player_row][player_column] = ' '
