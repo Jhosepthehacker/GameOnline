@@ -213,7 +213,7 @@ try:
 			);"""
 		)
 
-        # Por si acaso está añadido la columna 'id'
+        # Por si acaso se añadido la columna 'id'
 
         is_insert = app.sql_command("SELECT trys FROM user;")
 
