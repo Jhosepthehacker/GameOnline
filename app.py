@@ -1,3 +1,4 @@
+
 # ==========================
 #   Importación de módulos
 # ==========================
@@ -156,7 +157,7 @@ def game_in_terminal(option):
                     lifes_enemy -= 1
                     print("El enemigo ha perdido una vida")
 
-		    else:
+            else:
                  map[player_row][player_column] = ' '
                  map[next_row][next_column] = '@'
 
