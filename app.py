@@ -123,17 +123,17 @@ def game_in_terminal(option):
     position = map
 
     def print_map():
-	    for i in map:
+        for i in map:
             print("".join(i))
 
-	    print(f"\nVidas: {lifes}")
-	    print("\n------\n")
+        print(f"\nVidas: {lifes}")
+        print("\n------\n")
 
     def move_character(direction):
-	    global player_row, player_column, lifes, lifes_enemy
+        global player_row, player_column, lifes, lifes_enemy
 	
         row, column = player_row, player_column
-	
+
 	    if direction == "w":
 		    row -= 1
         elif direction == "s":
@@ -142,9 +142,9 @@ def game_in_terminal(option):
 		    column -= 1
 	    elif direction == "d":
 		    column += 1
-	
+
 	    next_row, next_column = row, column
-	
+
 	    if map[next_row][next_column] != "#":
             if map[next_row][next_column] == "E":
 			    possible_attack = random.randint(1, 6)
@@ -155,18 +155,18 @@ def game_in_terminal(option):
 			    elif possible_attack in (4, 5, 6):
                     lifes_enemy -= 1
 				    print("El enemigo ha perdido una vida")
-			
+
 		    else:
                  map[player_row][player_column] = ' '
                  map[next_row][next_column] = '@'
-		
+
                  player_row, player_column = next_row, next_column
         else:
              print("No puedes atravesar la barrera (límite del juego)")
 
     while True:
 	    print_map()
-	
+
         move_player = input("Escribe (w/s/a/d) para moverte, 'q' para salir: ").lower().strip()
 
         if move_player in ("w", "s", "a", "d"):
