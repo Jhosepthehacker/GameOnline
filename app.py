@@ -182,7 +182,7 @@ def game_in_terminal(option):
 	    
             for i in inventory:
                 print(f"  {i}")
-	    elif move_player == "x":
+        elif move_player == "x":
             pass
         else:
             print("Ingresa un caracter válido")
