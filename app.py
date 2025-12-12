@@ -222,13 +222,13 @@ try:
             for i in user_name:
                 if i in (';', '(', ')', "'", '*'):
                     print("Solo se aceptan letras (no carácteres ni números)")
-					break
+                    break
                 elif user_name.split().strip() in ("SELECT", "DROP", "WHERE", "UPDATE", "SET", "select", "drop", "where", "update", "set"):
-					print("No se aceptan comandos SQL en el input")
+                    print("No se aceptan comandos SQL en el input")
                     break
 				else:
                     app.sql_command(f"INSERT INTO user (id, name, trys) VALUES (1, '{user_name}', 1);")
-				    break
+                    break
     
       # Preguntamos si está en un entorno gráfico
         response = input(f"\n¿{user_name}, usted está en un entorno gráfico (GUI)?: ").lower()
