@@ -38,9 +38,14 @@ class ConnectToServer:
 	def __init__(self):
 		self.API_URL = "https://example.com" # Un ejemplo temporal
 
-    def send_requests(self):
+    def get_message_of_welcome(self):
 		self.response = requests.get(self.API_URL)
-		# Implementando....
+
+        self.json = response.json()
+        self.message = self.json.message
+        self.status = self.json.status
+
+        return self.message, self.status
 
 def game_in_terminal(option):
     if option == "1":
