@@ -36,16 +36,23 @@ class DataBase:
 
 class ConnectToServer:
 	def __init__(self):
-		self.API_URL = "https://example.com" # Un ejemplo temporal
+		self.API_URL = "https://gameserver-jly8.onrender.com"
 
     def get_message_of_welcome(self):
 		self.response = requests.get(self.API_URL)
 
         self.json = response.json()
-        self.message = self.json.message
-        self.status = self.json.status
+        self.message = json["message"]
+        self.status = json["status"]
 
         return self.message, self.status
+    def send_data_of_users():
+        self.API_URL = "https://gameserver-jly8.onrender.com"
+		self.response = request.post(self.API_URL)
+
+        self.json = response.json()
+        self.status = json["status"]
+        
 
 def game_in_terminal(option):
     if option == "1":
