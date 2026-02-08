@@ -32,8 +32,7 @@ def theme_background_color(color): # Se declara una función llamada "theme_back
         )
 
 def process_integers():
-    global list_of_numbers, widget_input, number_random
-
+    global list_of_numbers
     integers = widget_input.get()
     
     if integers in list_of_numbers:
@@ -101,16 +100,18 @@ def start_game():
     widget_send_integers_button = ttk.Button(
         app, 
         text="Enviar", 
-        command=process_integers)
+        command=process_integers
       )
     widget_send_integers_button.grid(row=2, column=1, pady=20)
     
     app.config(menu=menu_bar)
 
-messagebox.showwarning(
-    title="Advertencia",
-    message="¡El juego puede presentar problemas (en desarrollo)"
-)
+    global widget_input, number_random
+    
+    messagebox.showwarning(
+      title="Advertencia",
+      message="¡El juego puede presentar problemas (en desarrollo)"
+    )
 
 app.columnconfigure(0, weight=3)
 app.columnconfigure(2, weight=2)
