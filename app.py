@@ -25,13 +25,6 @@ def theme_background_color(color): # Se declara una función llamada "theme_back
 def process_integers(integers: int, number_random: int):
     try:
         integers = int(integers)
-    except ValueError:
-        print("ValueError: Error in the input, 'str' can't converssion to 'int'")
-        
-        messagebox.showerror(
-          title="ValueError",
-          message="Por favor solo ingrese números"
-        )
 
         if integers > number_random:
             messagebox.showinfo(
@@ -59,6 +52,14 @@ def process_integers(integers: int, number_random: int):
                 app.destroy()
             else:
                 start_game()
+
+    except ValueError:
+        print("ValueError: Error in the input, 'str' can't converssion to 'int'")
+        
+        messagebox.showerror(
+          title="ValueError",
+          message="Por favor solo ingrese números"
+        )
 
 def start_game():
     time.sleep(0.2)
