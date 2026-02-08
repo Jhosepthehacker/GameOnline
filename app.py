@@ -80,9 +80,12 @@ def start_game():
     time.sleep(0.2)
 
     global widget_input, number_random
-    
-    widget_title.destroy()
-    widget_start_game_button.destroy()
+
+    try:
+        widget_title.destroy()
+        widget_start_game_button.destroy()
+    except Tcl.Error:
+        pass
     
     app.config(bg="#aaaaaa")
     
