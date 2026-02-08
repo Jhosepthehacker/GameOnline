@@ -84,7 +84,7 @@ def start_game():
     try:
         widget_title.destroy()
         widget_start_game_button.destroy()
-    except Tcl.Error:
+    except TclError:
         pass
     
     app.config(bg="#aaaaaa")
