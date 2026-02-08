@@ -1,37 +1,44 @@
-name: Compilar App Tkinter
+name: Compilar APK con Buildozer
 
 on:
   push:
-    branches: [ "main" ]  # Se activa cuando subes cambios a main
-  pull_request:
     branches: [ "main" ]
 
 jobs:
   build:
-    runs-on: windows-latest  # Usamos Windows para generar un .exe directo
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Descargar código fuente
-      uses: actions/checkout@v4
+      - name: Checkout del código
+        uses: actions/checkout@v4
 
-    - name: Configurar Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
+      - name: Instalar dependencias de Buildozer
+        run: |
+          sudo apt update
+          sudo apt install -y git zip unzip colormake build-essential python3-pip python3-setuptools \
+          libffi-dev io.net-dev python3-dev libsdl2-dev libsdl2-image-dev libsdl2-mixer-dev \
+          libsdl2-ttf-dev zlib1g-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev \
+          libssl-dev autoconf libtool libexport-perl
 
-    - name: Instalar dependencias
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyinstaller  # PyInstaller convierte .py en .exe
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
 
-    - name: Generar Ejecutable
-      run: |
-        # --onefile: crea un solo archivo .exe
-        # --noconsole: evita que se abra una ventana negra de terminal al iniciar
-        pyinstaller --onefile --noconsole app.py
+      - name: Instalar Buildozer y Cython
+        run: |
+          pip install --user --upgrade buildozer cython==0.29.33
 
-    - name: Subir el ejecutable como artefacto
-      uses: actions/upload-artifact@v4
-      with:
-        name: Juego-Adivina-Numero
-        path: dist/app.exe
+      - name: Generar APK (Modo Debug)
+        run: |
+          # Este paso asume que tienes un archivo buildozer.spec
+          # Si no lo tienes, buildozer init lo crea por defecto
+          if [ ! -f buildozer.spec ]; then buildozer init; fi
+          buildozer -v android debug
+
+      - name: Subir APK generado
+        uses: actions/upload-artifact@v4
+        with:
+          name: App-Android-Debug
+          path: bin/*.apk
+          
