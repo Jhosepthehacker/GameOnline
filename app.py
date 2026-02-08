@@ -1,13 +1,15 @@
-import time
-import random
-from tkinter import *
-from tkinter import messagebox, ttk, Toplevel
+import time # Se importa la librería "time" para pausar el hilo principal de la app por un tiempo específico (simular carga)
+import random # Se importa la librería "random" para obtener un valor aleatorio
+from tkinter import * # Se importa todo sobre la librería "tkinter" para la UI main (interfaz de usuario principal)
+from tkinter import messagebox, ttk, Toplevel # Se importa "messagebox" para cajas de mensajes y proporcionar información a el usuario, se agrega de importación "ttk" para realizar la interfaz gráfica más moderna y bonita, e incluímos (importamos) "Toplevel" para diseñar ventanas secundarias (otras ventanas), esto se importa desde tkinter
 
-app = Tk()
-app.title("Graphical Window")
-app.geometry("400x400")
+app = Tk() # Se inicia el objeto para diseñar la ventana principal
+app.title("Graphical Window") # Se le agrega un título llamado "Graphical Window" a la ventana
+app.geometry("400x400") # Se declara una geometría de "400x400" a la ventana
 
-def theme_background_color(color):
+# --- Categoría de funciones ---
+
+def theme_background_color(color): # Se declara una función llamada "theme_background_color" para cambiar el tema de la ventana
     if color == "white":
         app.config(bg="#ffffff")
     elif color == "black":
