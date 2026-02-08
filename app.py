@@ -1,0 +1,112 @@
+import time
+import random
+from tkinter import *
+from tkinter import messagebox, ttk, Toplevel
+
+app = Tk()
+app.title("Graphical Window")
+app.geometry("400x400")
+
+def theme_background_color(color):
+    if color == "white":
+        app.config(bg="#ffffff")
+    elif color == "black":
+        app.config(bg="#222222")
+    else:
+        messagebox.showerror(
+            title="Error de especificación de color",
+            message="No se pudo asignar correctamente el color de fondo a la UI"
+        )
+
+def process_integers(integers: int, number_random: int):
+    integers = int(integers)
+
+    if integers > number_random:
+        messagebox.showinfo(
+            title="Mensaje del juego",
+            message="El número ingresado es demasiado alto"
+        )
+    elif integers < number_random:
+        messagebox.showinfo(
+            title="Mensaje del juego",
+            message="El número ingresado es demasiado bajo"
+        )
+    elif integers == number_random:
+        messagebox.showinfo(
+            title="Mensaje del juego",
+            message="¡Felicidades, has ganado!"
+        )
+        
+        question = messagebox.askquestion(
+            title="Pregunta",
+            message="¿Deseas continuar?"
+        )
+        
+        if question == "yes": # Tkinter messagebox devuelve "yes" en minúsculas
+            time.sleep(0.2)
+            app.destroy()
+        else:
+            start_game()
+
+def start_game():
+    time.sleep(0.2)
+    
+    # Declaramos global para que sea accesible en la función de comparación
+    global number
+    number = random.randint(1, 100)
+    
+    widget_title.destroy()
+    widget_start_game_button.destroy()
+    
+    app.config(bg="#aaaaaa")
+    
+    menu_bar = Menu(app)
+    
+    file_menu = Menu(menu_bar, tearoff=0)
+    file_menu.add_command(label="Claro", command=lambda: theme_background_color("white"))
+    file_menu.add_command(label="Oscuro", command=lambda: theme_background_color("black"))
+    
+    menu_bar.add_cascade(label="Tema", menu=file_menu)
+    
+    widget_text = Label(app, text="Adivina un número del 1 al 100", bg="#ffffff", fg="#0000ff")
+    widget_text.grid(row=0, column=1, pady=20)
+    
+    widget_input = ttk.Entry(app)
+    widget_input.grid(row=1, column=1)
+    
+    widget_send_integers_button = ttk.Button(
+        app, 
+        text="Enviar", 
+        command=lambda: process_integers(int(widget_input.get()), number)
+    )
+    widget_send_integers_button.grid(row=2, column=1, pady=20)
+    
+    app.config(menu=menu_bar)
+
+# --- Configuración inicial de la interfaz ---
+
+messagebox.showwarning(
+    title="Advertencia",
+    message="¡El juego puede presentar problemas (en desarrollo)"
+)
+
+app.columnconfigure(0, weight=3)
+app.columnconfigure(2, weight=2)
+app.columnconfigure(3, weight=1)
+
+widget_title = Label(app, text="Game")
+widget_title.grid(row=0, column=1, pady=20)
+
+widget_start_game_button = ttk.Button(
+    app, 
+    text="Start Game", 
+    command=start_game
+)
+widget_start_game_button.grid(row=1, column=1)
+
+# Comentado según tus capturas
+# widget_text_full_color = Label(app, text="¡Juega Ahora!")
+# widget_text_full_color.grid(row=2, column=1)
+
+app.config(bg="#6200d2")
+app.mainloop()
