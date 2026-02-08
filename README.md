@@ -10,36 +10,12 @@
 >[!TIP]
 > **¡Contáctanos en nuestra comunidad de discord!**
 
-## ¿Cómo ejecutar los juegos para lograrinteractuar con ellos?
-
-> Instalación De Dependencias
-
-```bash
-apt update
-apt install python3
-apt install build-essential
-apt install bash
-```
+## ¿Cómo ejecutar el juego?
 
 > En Python (app.py)
 
 ```bash
 python3 app.py
-```
-
-> En C++ (app.cpp)
-
-```bash
-g++ app.cpp -o app
-chmod +x app
-./app
-```
-
-> En Bash (setup.sh)
-
-```bash
-chmod +x setup.sh
-./setup.sh
 ```
 
 <div style="display: flex;">
