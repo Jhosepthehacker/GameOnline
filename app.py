@@ -26,39 +26,39 @@ def process_integers(integers: int, number_random: int):
     try:
         integers = int(integers)
     except ValueError:
-        print("ValueError: Error in the input, ")
+        print("ValueError: Error in the input, 'str' can't converssion to 'int'")
         
         messagebox.showerror(
           title="ValueError",
           message="Por favor solo ingrese números"
         )
 
-    if integers > number_random:
-        messagebox.showinfo(
-            title="Mensaje del juego",
-            message="El número ingresado es demasiado alto"
-        )
-    elif integers < number_random:
-        messagebox.showinfo(
-            title="Mensaje del juego",
-            message="El número ingresado es demasiado bajo"
-        )
-    elif integers == number_random:
-        messagebox.showinfo(
-            title="Mensaje del juego",
-            message="¡Felicidades, has ganado!"
-        )
+        if integers > number_random:
+            messagebox.showinfo(
+              title="Mensaje del juego",
+              message="El número ingresado es demasiado alto"
+            )
+        elif integers < number_random:
+            messagebox.showinfo(
+              title="Mensaje del juego",
+              message="El número ingresado es demasiado bajo"
+            )
+        elif integers == number_random:
+            messagebox.showinfo(
+              title="Mensaje del juego",
+              message="¡Felicidades, has ganado!"
+            )
         
-        question = messagebox.askquestion(
-            title="Pregunta",
-            message="¿Deseas continuar?"
-        )
+            question = messagebox.askquestion(
+              title="Pregunta",
+              message="¿Deseas continuar?"
+            )
         
-        if question == "yes":
-            time.sleep(0.2)
-            app.destroy()
-        else:
-            start_game()
+            if question == "yes":
+                time.sleep(0.2)
+                app.destroy()
+            else:
+                start_game()
 
 def start_game():
     time.sleep(0.2)
