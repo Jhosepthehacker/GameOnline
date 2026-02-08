@@ -7,6 +7,8 @@ app = Tk() # Se inicia el objeto para diseñar la ventana principal
 app.title("Graphical Window") # Se le agrega un título llamado "Graphical Window" a la ventana
 app.geometry("400x400") # Se declara una geometría de "400x400" a la ventana
 
+number_random = random.randint(1, 100)
+
 list_of_numbers = []
 add_number = 0
 
@@ -75,8 +77,6 @@ def process_integers():
 
 def start_game():
     time.sleep(0.2)
-
-    number_random = random.randint(1, 100)
 
     widget_title.destroy()
     widget_start_game_button.destroy()
