@@ -31,8 +31,9 @@ def theme_background_color(color): # Se declara una función llamada "theme_back
             message="No se pudo asignar correctamente el color de fondo a la UI"
         )
 
-def process_integers(integers: int, number_random: int):
+def process_integers(integers):
     global list_of_numbers
+    number_random = random.randint(1, 100)
 
     if integers in list_of_numbers:
         integers = int(integers)
@@ -74,10 +75,7 @@ def process_integers(integers: int, number_random: int):
 
 def start_game():
     time.sleep(0.2)
-    
-    global number
-    number = random.randint(1, 100)
-    
+
     widget_title.destroy()
     widget_start_game_button.destroy()
     
@@ -100,7 +98,7 @@ def start_game():
     widget_send_integers_button = ttk.Button(
         app, 
         text="Enviar", 
-        command=lambda: process_integers(widget_input.get(), number)
+        command=lambda: process_integers(widget_input.get())
       )
     widget_send_integers_button.grid(row=2, column=1, pady=20)
     
