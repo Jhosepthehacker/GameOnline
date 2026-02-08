@@ -7,6 +7,15 @@ app = Tk() # Se inicia el objeto para diseñar la ventana principal
 app.title("Graphical Window") # Se le agrega un título llamado "Graphical Window" a la ventana
 app.geometry("400x400") # Se declara una geometría de "400x400" a la ventana
 
+list_of_numbers = []
+add_number = 0
+
+for i in range(1, 101):
+    add_number += 1
+    
+    number_string = str(add_number)
+    list_of_numbers.append(number_string)
+
 # --- Categoría de funciones ---
 
 # [*] Algoritmo de color del tema (cambio)
@@ -23,43 +32,45 @@ def theme_background_color(color): # Se declara una función llamada "theme_back
         )
 
 def process_integers(integers: int, number_random: int):
-    try:
+    global list_of_numbers
+
+    if integers in list_of_numbers:
         integers = int(integers)
-
-        if integers > number_random:
-            messagebox.showinfo(
-              title="Mensaje del juego",
-              message="El número ingresado es demasiado alto"
-            )
-        elif integers < number_random:
-            messagebox.showinfo(
-              title="Mensaje del juego",
-              message="El número ingresado es demasiado bajo"
-            )
-        elif integers == number_random:
-            messagebox.showinfo(
-              title="Mensaje del juego",
-              message="¡Felicidades, has ganado!"
-            )
-        
-            question = messagebox.askquestion(
-              title="Pregunta",
-              message="¿Deseas continuar?"
-            )
-        
-            if question == "yes":
-                time.sleep(0.2)
-                app.destroy()
-            else:
-                start_game()
-
-    except ValueError:
+    else:
         print("ValueError: Error in the input, 'str' can't converssion to 'int'")
         
         messagebox.showerror(
           title="ValueError",
           message="Por favor solo ingrese números"
         )
+        return None
+
+    if integers > number_random:
+        messagebox.showinfo(
+          title="Mensaje del juego",
+          message="El número ingresado es demasiado alto"
+        )
+    elif integers < number_random:
+        messagebox.showinfo(
+          title="Mensaje del juego",
+          message="El número ingresado es demasiado bajo"
+        )
+    elif integers == number_random:
+        messagebox.showinfo(
+          title="Mensaje del juego",
+          message="¡Felicidades, has ganado!"
+        )
+        
+        question = messagebox.askquestion(
+          title="Pregunta",
+          message="¿Deseas continuar?"
+        )
+        
+        if question == "yes":
+            time.sleep(0.2)
+            app.destroy()
+        else:
+            start_game()
 
 def start_game():
     time.sleep(0.2)
@@ -85,12 +96,12 @@ def start_game():
     
     widget_input = ttk.Entry(app)
     widget_input.grid(row=1, column=1)
-    
+
     widget_send_integers_button = ttk.Button(
         app, 
         text="Enviar", 
-        command=lambda: process_integers(int(widget_input.get()), number)
-    )
+        command=lambda: process_integers(widget_input.get(), number)
+      )
     widget_send_integers_button.grid(row=2, column=1, pady=20)
     
     app.config(menu=menu_bar)
