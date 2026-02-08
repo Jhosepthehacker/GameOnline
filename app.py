@@ -10,11 +10,11 @@ app.geometry("400x400") # Se declara una geometría de "400x400" a la ventana
 # --- Categoría de funciones ---
 
 def theme_background_color(color): # Se declara una función llamada "theme_background_color" para cambiar el tema de la ventana
-    if color == "white":
-        app.config(bg="#ffffff")
-    elif color == "black":
-        app.config(bg="#222222")
-    else:
+    if color == "white": # Se comprueba si el valor de la variable "color" es igual a "white"
+        app.config(bg="#ffffff") # Si la condición se evalúa dn True, entonces se cambia el fondo de la ventana a blanco intenso (#ffffff)
+    elif color == "black": # Se comprueba si el valor de la variable "color" es igual a "black"
+        app.config(bg="#222222") # Si la condición evalúa en True, entonces se cambia el fondo de la ventana a gris oscuro (#222222)
+    else:                        # De lo contrario (si todas las condiciones evaluaron en False, se lanza una caja de mensaje de error de especificación en el color (no se recibió un color correcto, aunque solo esto es una medida de seguridad extra)
         messagebox.showerror(
             title="Error de especificación de color",
             message="No se pudo asignar correctamente el color de fondo a la UI"
