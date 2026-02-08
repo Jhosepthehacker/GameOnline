@@ -8,6 +8,7 @@ app.title("Graphical Window") # Se le agrega un título llamado "Graphical Windo
 app.geometry("400x400") # Se declara una geometría de "400x400" a la ventana
 
 number_random = random.randint(1, 100)
+widget_input = None
 
 list_of_numbers = []
 add_number = 0
@@ -78,6 +79,8 @@ def process_integers():
 def start_game():
     time.sleep(0.2)
 
+    global widget_input, number_random
+    
     widget_title.destroy()
     widget_start_game_button.destroy()
     
@@ -106,8 +109,6 @@ def start_game():
     
     app.config(menu=menu_bar)
 
-    global widget_input, number_random
-    
     messagebox.showwarning(
       title="Advertencia",
       message="¡El juego puede presentar problemas (en desarrollo)"
