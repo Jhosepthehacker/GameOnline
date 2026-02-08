@@ -9,6 +9,8 @@ app.geometry("400x400") # Se declara una geometría de "400x400" a la ventana
 
 # --- Categoría de funciones ---
 
+# [*] Algoritmo de color del tema (cambio)
+
 def theme_background_color(color): # Se declara una función llamada "theme_background_color" para cambiar el tema de la ventana
     if color == "white": # Se comprueba si el valor de la variable "color" es igual a "white"
         app.config(bg="#ffffff") # Si la condición se evalúa dn True, entonces se cambia el fondo de la ventana a blanco intenso (#ffffff)
