@@ -42,7 +42,7 @@ def process_integers(integers: int, number_random: int):
             message="¿Deseas continuar?"
         )
         
-        if question == "yes": # Tkinter messagebox devuelve "yes" en minúsculas
+        if question == "yes":
             time.sleep(0.2)
             app.destroy()
         else:
@@ -51,7 +51,6 @@ def process_integers(integers: int, number_random: int):
 def start_game():
     time.sleep(0.2)
     
-    # Declaramos global para que sea accesible en la función de comparación
     global number
     number = random.randint(1, 100)
     
@@ -83,8 +82,6 @@ def start_game():
     
     app.config(menu=menu_bar)
 
-# --- Configuración inicial de la interfaz ---
-
 messagebox.showwarning(
     title="Advertencia",
     message="¡El juego puede presentar problemas (en desarrollo)"
@@ -103,10 +100,6 @@ widget_start_game_button = ttk.Button(
     command=start_game
 )
 widget_start_game_button.grid(row=1, column=1)
-
-# Comentado según tus capturas
-# widget_text_full_color = Label(app, text="¡Juega Ahora!")
-# widget_text_full_color.grid(row=2, column=1)
 
 app.config(bg="#6200d2")
 app.mainloop()
