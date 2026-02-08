@@ -71,10 +71,16 @@ def process_integers():
         )
         
         if question == "yes":
+            number_random = random.randint(1, 100)
+            start_game()
+        else:
+            messsagebox.showinfo(
+              title="Agradecimiento",
+              message="Gracias por juegar"
+            )
+
             time.sleep(0.2)
             app.destroy()
-        else:
-            start_game()
 
 def start_game():
     time.sleep(0.2)
