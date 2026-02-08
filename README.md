@@ -1,4 +1,4 @@
-# GameOnline
+# Search the number
 
 >[!NOTE]
 > Un juego dónde puedes divertirte jugando online o incluso offline.
