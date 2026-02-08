@@ -23,7 +23,15 @@ def theme_background_color(color): # Se declara una función llamada "theme_back
         )
 
 def process_integers(integers: int, number_random: int):
-    integers = int(integers)
+    try:
+        integers = int(integers)
+    except ValueError:
+        print("ValueError: Error in the input, ")
+        
+        messagebox.showerror(
+          title="ValueError",
+          message="Por favor solo ingrese números"
+        )
 
     if integers > number_random:
         messagebox.showinfo(
