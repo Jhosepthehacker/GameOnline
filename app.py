@@ -35,7 +35,7 @@ def theme_background_color(color): # Se declara una función llamada "theme_back
         )
 
 def process_integers():
-    global list_of_numbers
+    global list_of_numbers, number_random, widget_input
     integers = widget_input.get()
     
     if integers in list_of_numbers:
